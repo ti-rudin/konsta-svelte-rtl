@@ -20,8 +20,8 @@
   export let setColorTheme;
   export let colorPickerOpened;
 
-  let darkMode = false;
-
+  let darkMode = true;
+ 
   const toggleDarkMode = () => {
     darkMode = !darkMode;
     if(darkMode){
@@ -44,41 +44,18 @@
   afterUpdate(() => {
     darkMode = document.documentElement.classList.contains('dark');
     rtl = document.dir === 'rtl';
+    
   });
+  setTheme('material')
 </script>
 
 <Page>
-  <Navbar title="Konsta UI" large transparent centerTitle />
+  <Navbar title="Настройки" transparent centerTitle />
 
-  <BlockTitle>Theme</BlockTitle>
+  
   <List strong inset>
-    <ListItem label title="iOS Theme">
-      <Radio
-        slot="media"
-        onChange={() => setTheme('ios')}
-        component="div"
-        checked={theme === 'ios'}
-      />
-    </ListItem>
-    <ListItem label title="Material Theme">
-      <Radio
-        slot="media"
-        onChange={() => setTheme('material')}
-        component="div"
-        checked={theme === 'material'}
-      />
-    </ListItem>
-  </List>
-  <List strong inset>
-    <ListItem title="RTL" label>
-      <Toggle
-        slot="after"
-        component="div"
-        onChange={() => toggleRtl()}
-        checked={rtl}
-      />
-    </ListItem>
-    <ListItem title="Dark Mode" label>
+   
+    <ListItem title="Тёмный режим" label>
       <Toggle
         slot="after"
         component="div"
@@ -88,7 +65,7 @@
     </ListItem>
 
     <ListItem
-      title="Color Theme"
+      title="Цветовая тема"
       link
       onClick={() => (colorPickerOpened = true)}
     >
